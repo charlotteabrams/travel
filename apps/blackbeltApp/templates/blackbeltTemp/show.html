@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Show</title>
+    </head>
+    <body>
+        <a href="{% url 'my_login_logout' %}">Log out</a>
+        <a href="{% url 'my_login_home' %}">Home</a>
+
+        <h1>{{trip.destination}}</h1>
+
+        <p>Planned by: {{trip.creator.name}}</p>
+        <p>Description: {{trip.description}}</p>
+        <p>Travel from: {{trip.travelfrom}}</p>
+        <p>Travel to: {{trip.travelto}}</p>
+
+        <h2>Other user's joining the trip:</h2>
+        {% if trip.travellers.all %}
+            <ul>
+                {% for traveller in trip.travellers.all %}
+                    <li>{{traveller.name}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    </body>
+</html>

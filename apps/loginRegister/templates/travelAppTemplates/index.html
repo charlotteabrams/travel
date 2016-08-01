@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login/Register</title>
+	
+</head>
+<body>
+
+	<div>
+		<div class='homeimage'>
+			<h1>Welcome!</h1>
+			<form action="{% url 'my_login_login' %}" method = 'POST'>
+				{% csrf_token %}
+					<table>
+						<tr>
+							<th>Username:</th>
+							<th>Password:</th>
+						</tr>
+						<tr>
+							<td><input class="form-control input-sm" type="text" name="username" placeholder="Username"></td>
+							<td><input class="form-control input-sm" type="password" name="password" placeholder="Password"></td>
+							<td><input class = 'btn btn-primary homebtn' type="submit" name="enter" value="Log In"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class = 'nonuser'>Not a user? <a href="{% url 'my_login_register' %}">Sign Up Here!</a></td>
+						</tr>
+					</table>
+				</form>
+{% if messages %}
+<ul class="messages">
+	{% for message in messages %}
+	<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }} </li>
+	{% endfor %}
+</ul>
+{% endif %}
+
+	</div>
+
+</body>
+</html>

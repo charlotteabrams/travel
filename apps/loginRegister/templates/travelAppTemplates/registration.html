@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login/Registration</title>
+	
+</head>
+<body>
+
+	<h1>Register!</h1>
+		<div>
+			<form action="{% url 'my_login_process' %}" method="POST">
+				{% csrf_token %}
+				<table>
+					<tr>
+						<td><label>Name:</label></td>
+						<td><input class='input-sm' type="text" name="name" placeholder="Name"></td>
+					</tr>
+					<tr>
+						<td><label>Username:</label></td>
+						<td><input class='input-sm' type="text" name="username" placeholder="Username"></td>
+					</tr>
+					<tr>
+						<td><label>Password:</label></td>
+						<td><input class='input-sm' type="password" name="password" placeholder="Password"></td>
+					</tr>
+					<tr>
+						<td><label>Confirm Password:</label></td>
+						<td><input class='input-sm' type="password" name="confirm" placeholder="Confirm"></td>
+					</tr>
+					<tr>
+						<td><label><input class = 'btn btn-primary' type="submit" name="submit" value="Register"></label></td>
+					</tr>
+			</form>
+			<hr>
+				</table>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+	
+			
+		</div>	
+
+
+</body>
+</html>
